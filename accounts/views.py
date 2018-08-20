@@ -1,7 +1,7 @@
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, UpdateView
 
 
 class SignUp(FormView):
@@ -13,3 +13,12 @@ class SignUp(FormView):
         user = form.save()
         login(self.request, user)
         return super(SignUp, self).form_valid(form)
+
+
+class UserUpdate(UpdateView):
+    template_name = 'registration/user_update.html'
+    fields = ['username', 'email', 'first_name', 'last_name']
+    success_url = reverse_lazy('main')
+
+    def get_object(self, queryset=None):
+        return self.request.user
