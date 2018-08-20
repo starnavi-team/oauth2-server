@@ -1,15 +1,14 @@
-from allchain.utility.directory import root
-
-
-# Enable debugging
 DEBUG = True
 
+SECRET_KEY = '_l9&u!_mga+y=%)0-0xj43h5$1zv&lcrvmzk1-%ecv^ofw=lf9'
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': root('db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'oauth2_server',
+        'USER': 'postgres',
+        'PASSWORD': 'pass',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
