@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import FormView, UpdateView
@@ -15,7 +16,7 @@ class SignUp(FormView):
         return super(SignUp, self).form_valid(form)
 
 
-class UserUpdate(UpdateView):
+class UserUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'registration/user_update.html'
     fields = ['username', 'email', 'first_name', 'last_name']
     success_url = reverse_lazy('main')
