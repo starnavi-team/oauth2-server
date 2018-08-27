@@ -1,0 +1,15 @@
+version: "2"
+services:
+  backend:
+    restart: always
+    build: .
+    volumes:
+      - .:/data/code
+
+    ports:
+      - "8001:8001"
+
+    environment:
+      RUN_TYPE: production
+
+    entrypoint: ["./docker-entry-point.sh"]
