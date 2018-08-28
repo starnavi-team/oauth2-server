@@ -20,6 +20,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('oauth2_provider.urls')),
+    path('', include('allauth.urls')),
     path('', include('accounts.urls')),
     path('api/', include('accounts.api.urls')),
     path('', TemplateView.as_view(template_name='main.html'), name='main'),
