@@ -1,17 +1,5 @@
 version: "2"
 services:
-  nginx:
-    image: nginx:latest
-    container_name: oauth2server_nginx
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./static:/data/static
-    depends_on:
-      - backend
-
   backend:
     restart: always
     build: .
@@ -26,3 +14,8 @@ services:
       RUN_TYPE: production
 
     entrypoint: ["./docker-entry-point.sh"]
+
+networks:
+  default:
+    external:
+      name: allchaininfrastructure_default
