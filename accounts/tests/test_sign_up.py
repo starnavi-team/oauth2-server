@@ -50,6 +50,6 @@ class UserTestCase(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertIn(
-            'The two password fields didn\'t match.',
+            'You must type the same password each time.',
             response.context['form'].errors['password2'],
         )
